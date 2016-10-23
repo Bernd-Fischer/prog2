@@ -59,6 +59,14 @@ public class Sinusfunktion extends Application {
             cursorY = 200;
             z2 = 0;
             i = 0;
+            z1=8;
+        }
+        
+                private void newParams(){
+            cursorX = 0;
+            cursorY = 200;
+            z2 = 0;
+            i = 0;
         }
 	
 	@Override
@@ -92,7 +100,7 @@ public class Sinusfunktion extends Application {
                             showZ1_Lbl.setText("z1:" + Double.toString(z1));
                             z1_Tf.clear();
                             root.getChildren().remove(11, root.getChildren().size());
-                            resetParams();
+                            newParams();
                             sinus(f);
                         }catch(Exception e){
                             System.out.println("z1 input is not a double!");
