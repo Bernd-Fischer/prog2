@@ -29,6 +29,7 @@ public class Sinusfunktion extends Application {
 	double z0;
 	double z1 = 8;  // Amplitude - 8 default
 	double z2 = 0;
+    double zGlobal = z1;
         
         double f = 1.99; // 1.99 default
 	
@@ -66,6 +67,7 @@ public class Sinusfunktion extends Application {
             cursorX = 0;
             cursorY = 200;
             z2 = 0;
+            //z1 = 8;
             i = 0;
         }
 	
@@ -97,6 +99,8 @@ public class Sinusfunktion extends Application {
                     if(event.getCode() == KeyCode.ENTER) {
                         try{
                             z1 = Double.parseDouble(z1_Tf.getText());
+                            zGlobal = z1;
+
                             showZ1_Lbl.setText("z1:" + Double.toString(z1));
                             z1_Tf.clear();
                             root.getChildren().remove(11, root.getChildren().size());
@@ -116,8 +120,12 @@ public class Sinusfunktion extends Application {
                             showF_Lbl.setText("f:" + Double.toString(f));
                             f_Tf.clear();
                             root.getChildren().remove(11, root.getChildren().size());
-                            resetParams();
+
+                            newParams();
+                            z1 = zGlobal;
                             sinus(f);
+
+
                         }catch(Exception e){
                             System.out.println("f input is not a double!");
                             f_Tf.clear();
@@ -132,7 +140,7 @@ public class Sinusfunktion extends Application {
                            showB_Lbl.setText("b:" + Double.toString(b));
                            b_Tf.clear();
                            root.getChildren().remove(11, root.getChildren().size());
-                           resetParams();
+                           newParams();
                            sinus(f);
                        }catch(Exception e){
                            System.out.println("b input is not a double!");
